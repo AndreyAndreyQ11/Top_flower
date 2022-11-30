@@ -1,0 +1,19 @@
+.container {
+  background-color: aquamarine;
+  border: 2px solid rgb(40, 176, 47);
+
+  display: inline-flex;
+  justify-content: center;
+  position: relative;
+  left: 50%;
+  top: 10px;
+  transform: translate(-50%, 0);
+  flex-wrap: wrap;
+  width: 500px;
+}
+
+.container>div {
+
+  width: 100%;
+
+}

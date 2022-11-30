@@ -1,0 +1,21 @@
+.text {
+    border: 1px solid rgb(0, 0, 0);
+    outline: 1px solid rgb(0, 0, 0);
+    margin: 2px 0;
+    overflow: hidden;
+    height: 30px;
+
+}
+
+.text>div {
+    background-color: goldenrod;
+    display: inline-block;
+    width: 58px;
+    height: 100%;
+    border-right: 2px solid rgb(0, 0, 0);
+    font-weight: 700;
+    text-transform: capitalize;
+    text-align: right;
+
+    padding-right: 2px;
+}
