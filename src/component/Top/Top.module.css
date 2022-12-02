@@ -1,21 +1,44 @@
-.text {
-    border: 1px solid rgb(0, 0, 0);
-    outline: 1px solid rgb(0, 0, 0);
+.container {
     margin: 2px 0;
-    overflow: hidden;
-    height: 30px;
-
+    min-height: 44px;
+    display: flex;
+    justify-items: center;
 }
 
-.text>div {
+.text {
     background-color: goldenrod;
-    display: inline-block;
-    width: 58px;
-    height: 100%;
-    border-right: 2px solid rgb(0, 0, 0);
+    width: 70px;
+    border: 2px solid rgb(0, 0, 0);
+    border-right: none;
     font-weight: 700;
     text-transform: capitalize;
     text-align: right;
 
     padding-right: 2px;
+}
+
+.fild {
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid rgb(254, 6, 6);
+    border: 2px solid rgb(0, 0, 0);
+    width: 100%;
+}
+
+
+.fild>div {
+    font-size: 8px;
+    border: 1px solid rgb(0, 0, 0);
+    /* background: rgb(9, 98, 69); */
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 4px;
+    box-shadow: inset -2px -1px 4px gold;
+
+    text-align: right;
+    user-select: none;
+
+    background: url("") 0 0/contain no-repeat, rgb(9, 98, 69);
+    cursor: pointer;
 }
