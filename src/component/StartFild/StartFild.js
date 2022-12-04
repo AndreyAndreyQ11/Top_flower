@@ -6,7 +6,6 @@ import Pictures from "../Pictures/Pictures";
 export default class StartFild extends Component {
 
 
-
     render() {
         const { flower, onMoveFlower, flightPictures, onReversStick } = this.props
 

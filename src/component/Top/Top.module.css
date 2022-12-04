@@ -24,21 +24,3 @@
     border: 2px solid rgb(0, 0, 0);
     width: 100%;
 }
-
-
-.fild>div {
-    font-size: 8px;
-    border: 1px solid rgb(0, 0, 0);
-    /* background: rgb(9, 98, 69); */
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    margin: 4px;
-    box-shadow: inset -2px -1px 4px gold;
-
-    text-align: right;
-    user-select: none;
-
-    background: url("") 0 0/contain no-repeat, rgb(9, 98, 69);
-    cursor: pointer;
-}

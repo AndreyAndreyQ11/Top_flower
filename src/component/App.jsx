@@ -22,15 +22,35 @@ export default class App extends Component {
 
   sticks = (el) => {
     if (this.state.flightPictures.stick === true) {
+
       this.setState(prevState => ({
         flightPictures: {
           ...prevState.flightPictures,
-          x: el.clientX,
-          y: el.clientY,
+          // x: el.clientX,
+          // y: el.clientY,
+          x: el.movementX,
+          y: el.movementY,
         }
       }));
     };
+    // console.log(el);
+    // el.stopPropagation();
   };
+
+  // test_Foo = (e) => {
+  //   console.log(e);
+  //   // el.nativeEvent.stopImmediatePropagation()
+  //   // el.stopPropagation();
+  //   e.stopPropagation();
+  //   e.nativeEvent.stopImmediatePropagation();
+  // };
+
+  test_Foo = function (ev) {
+    ev.preventDefault()
+    ev.stopPropagation();
+    ev.nativeEvent.stopImmediatePropagation();
+    console.log(ev.target);
+  }
 
   reversStick = () => {
 
@@ -59,7 +79,9 @@ export default class App extends Component {
 
     return (
       <div className={s.container}
-        onMouseMove={this.sticks}>
+        // onMouseMove={this.sticks}
+        onClick={this.test_Foo}
+      >
 
         <Top text="good" flower={good}
           flightPictures={flightPictures}
