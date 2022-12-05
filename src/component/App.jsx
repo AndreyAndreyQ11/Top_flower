@@ -22,35 +22,34 @@ export default class App extends Component {
 
   sticks = (el) => {
     if (this.state.flightPictures.stick === true) {
-
       this.setState(prevState => ({
         flightPictures: {
           ...prevState.flightPictures,
-          // x: el.clientX,
-          // y: el.clientY,
-          x: el.movementX,
-          y: el.movementY,
+          x: el.nativeEvent.layerX,
+          y: el.nativeEvent.layerY,
+          // x: el.nativeEvent.screenX,
+          // y: el.nativeEvent.screenY,
+
+
+          // x: el.clientX - 100,
+          // y: el.clientY - 100
         }
       }));
     };
-    // console.log(el);
-    // el.stopPropagation();
+    console.log(el.nativeEvent);
   };
 
-  // test_Foo = (e) => {
-  //   console.log(e);
-  //   // el.nativeEvent.stopImmediatePropagation()
-  //   // el.stopPropagation();
-  //   e.stopPropagation();
-  //   e.nativeEvent.stopImmediatePropagation();
-  // };
 
-  test_Foo = function (ev) {
-    ev.preventDefault()
-    ev.stopPropagation();
-    ev.nativeEvent.stopImmediatePropagation();
-    console.log(ev.target);
-  }
+  // test_Foo = function (ev) {
+  //   // ev.preventDefault()
+  //   // ev.stopPropagation();
+  //   // ev.nativeEvent.stopImmediatePropagation();
+  //   console.log(ev);
+
+  //   // console.dir(ev.currentTarget);
+  //   console.log(ev.nativeEvent.layerX);
+  //   // console.log(ev.clientX - ev.currentTarget.offsetLeft);
+  // }
 
   reversStick = () => {
 
@@ -79,8 +78,8 @@ export default class App extends Component {
 
     return (
       <div className={s.container}
-        // onMouseMove={this.sticks}
-        onClick={this.test_Foo}
+        onMouseMove={this.sticks}
+      // onClick={this.test_Foo}
       >
 
         <Top text="good" flower={good}
