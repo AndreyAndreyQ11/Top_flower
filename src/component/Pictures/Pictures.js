@@ -2,6 +2,10 @@ import { Component } from "react"
 
 import s from "./Pictures.module.css"
 
+
+
+
+
 export default class Pictures extends Component {
     // static defaultProps = {
     //     flightPictures: {
@@ -13,6 +17,8 @@ export default class Pictures extends Component {
 
     state = {
         activeOption: "",
+        render_true: this.props.stickPicture,
+        elemChosen: this.props.stickPicture,
     }
 
     makeClassName = (index) => {
@@ -25,22 +31,42 @@ export default class Pictures extends Component {
 
         return optionClass.join(" ");
     };
+    // && this.props.stickPicture
+
 
 
     target = (index) => {
-        if (index !== this.state.activeOption) {
-            this.setState({
-                activeOption: index,
-            })
-        } else {
-            this.setState({
+        // if (index !== this.state.activeOption) {
+        // this.setState({
+        //     activeOption: index,
+        // })
+        // } else {
+        //     this.setState({
+        //         activeOption: "",
+        //     })
+        // }
+
+        if (this.state.elemChosen) {
+            this.setState(pr => ({
                 activeOption: "",
-            })
+                elemChosen: !pr.elemChosen
+            }))
         }
+
+
+        if (!this.state.elemChosen) {
+            this.setState(pr => ({
+                activeOption: index,
+                elemChosen: !pr.elemChosen
+            }))
+        }
+        this.props.onReversStick();
     }
 
+
+
     render() {
-        const { flower, flightPictures, onReversStick, onMoveFlower } = this.props
+        const { flower, flightPictures, onReversStick, onMoveFlower, stickPicture } = this.props
 
         return (
             <>
@@ -48,7 +74,6 @@ export default class Pictures extends Component {
                     <div key={id}
                         style={{
                             backgroundImage: `url(${url})`,
-
                             top: flightPictures.y,
                             left: flightPictures.x,
                         }}

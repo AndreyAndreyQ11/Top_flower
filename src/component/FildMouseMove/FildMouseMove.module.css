@@ -1,0 +1,15 @@
+.mouseMove {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(234, 15, 15); */
+    background-color: rgba(113, 113, 113, 0.416);
+    cursor: grabbing;
+    user-select: none;
+}
+
+._displey_none {
+    display: none;
+}

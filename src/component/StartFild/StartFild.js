@@ -7,7 +7,7 @@ export default class StartFild extends Component {
 
 
     render() {
-        const { flower, onMoveFlower, flightPictures, onReversStick } = this.props
+        const { flower, onMoveFlower, flightPictures, onReversStick, stickPicture } = this.props
 
         return (
             <div className={s.fild}>
@@ -15,6 +15,7 @@ export default class StartFild extends Component {
                     onMoveFlower={onMoveFlower}
                     flightPictures={flightPictures}
                     onReversStick={onReversStick}
+                    stickPicture={stickPicture}
                 />
             </div>
         )

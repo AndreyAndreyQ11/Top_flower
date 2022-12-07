@@ -14,10 +14,10 @@
   margin-top: 100px;
 
   position: relative;
+  padding: 2px;
+  /* line-height: 0; */
 }
 
 .container>div {
-
   width: 100%;
-
 }

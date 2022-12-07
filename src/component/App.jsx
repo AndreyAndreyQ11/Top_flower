@@ -5,7 +5,9 @@ import initialFlower from "../flower.json"
 
 import Top from "./Top/Top"
 import StartFild from "./StartFild/StartFild"
+import FildMouseMove from "./FildMouseMove/FildMouseMove"
 
+import flyPictures from "./flyPictures.js"
 
 export default class App extends Component {
   state = {
@@ -13,55 +15,46 @@ export default class App extends Component {
     normal: [],
     hard: [],
     pictures: initialFlower,
+    fildMouseMove: [],
+    stickPicture: false,
     flightPictures: {
-      stick: !false,
       x: "",
       y: "",
     }
   }
 
   sticks = (el) => {
-    if (this.state.flightPictures.stick === true) {
-      this.setState(prevState => ({
-        flightPictures: {
-          ...prevState.flightPictures,
-          x: el.nativeEvent.layerX,
-          y: el.nativeEvent.layerY,
-          // x: el.nativeEvent.screenX,
-          // y: el.nativeEvent.screenY,
 
+    this.setState(prevState => ({
+      flightPictures: {
+        // ...prevState.flightPictures,
+        x: el.nativeEvent.layerX,
+        y: el.nativeEvent.layerY,
+        // x: el.nativeEvent.screenX,
+        // y: el.nativeEvent.screenY,
+        // x: el.screenX,
+        // y: el.screenY,
+      }
+    }), () => {
+      console.log(flyPictures(this.state.flightPictures));
+    });
 
-          // x: el.clientX - 100,
-          // y: el.clientY - 100
-        }
-      }));
-    };
-    console.log(el.nativeEvent);
   };
 
-
-  // test_Foo = function (ev) {
-  //   // ev.preventDefault()
-  //   // ev.stopPropagation();
-  //   // ev.nativeEvent.stopImmediatePropagation();
-  //   console.log(ev);
-
-  //   // console.dir(ev.currentTarget);
-  //   console.log(ev.nativeEvent.layerX);
-  //   // console.log(ev.clientX - ev.currentTarget.offsetLeft);
-  // }
+  sticksUp = (el) => {
+    this.setState({
+      flightPictures: {
+        x: el.nativeEvent.layerX,
+        y: el.nativeEvent.layerY,
+      }
+    });
+  };
 
   reversStick = () => {
 
-    // this.setState(prevState => ({
-
-    //   flightPictures: {
-    //     ...prevState.flightPictures,
-    //     stick: !prevState.flightPictures.stick,
-    //     x: prevState.flightPictures.x ? "" : this.state.flightPictures.x,
-    //     y: prevState.flightPictures.y ? "" : this.state.flightPictures.y,
-    //   }
-    // }));
+    this.setState(prevState => ({
+      stickPicture: !prevState.stickPicture,
+    }));
   };
 
   moveFlower = (idFlower) => {
@@ -74,18 +67,19 @@ export default class App extends Component {
   };
 
   render() {
-    const { good, normal, hard, pictures, flightPictures } = this.state
+    const { good, normal, hard, pictures, flightPictures, stickPicture } = this.state
 
     return (
       <div className={s.container}
-        onMouseMove={this.sticks}
-      // onClick={this.test_Foo}
+        onMouseUp={this.sticksUp}
+      // onMouseMove={this.sticksUp}
       >
 
         <Top text="good" flower={good}
           flightPictures={flightPictures}
           onMoveFlower={this.moveFlower}
           onReversStick={this.reversStick}
+          stickPicture={stickPicture}
         />
         <Top text="normal" flower={normal} />
         <Top text="hard" flower={hard} />
@@ -93,9 +87,16 @@ export default class App extends Component {
           flightPictures={flightPictures}
           onMoveFlower={this.moveFlower}
           onReversStick={this.reversStick}
+          stickPicture={stickPicture}
         />
-      </div>
 
+        <FildMouseMove
+          stickPicture={this.state.stickPicture}
+          onSticks={this.sticks}
+          onReversStick={this.reversStick}
+        />
+
+      </div>
     );
-  }
-}
+  };
+};

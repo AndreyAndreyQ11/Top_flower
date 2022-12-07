@@ -26,4 +26,7 @@
 
     cursor: grabbing;
     user-select: none;
+    margin: 0px;
+
+    /* z-index: 999; */
 }
