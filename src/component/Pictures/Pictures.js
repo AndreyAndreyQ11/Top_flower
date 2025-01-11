@@ -1,92 +1,34 @@
-import { Component } from "react"
+import { Component } from "react";
 
-import s from "./Pictures.module.css"
-
-
-
-
+import s from "./Pictures.module.css";
 
 export default class Pictures extends Component {
-    // static defaultProps = {
-    //     flightPictures: {
-    //         stick: !false,
-    //         x: "",
-    //         y: "",
-    //     }
-    // }
+  static defaultProps = {
+    flyPicturyStart: false,
+    flightPictures: {
+      x: 0,
+      y: 0,
+    },
+  };
 
-    state = {
-        activeOption: "",
-        render_true: this.props.stickPicture,
-        elemChosen: this.props.stickPicture,
-    }
-
-    makeClassName = (index) => {
-        const optionClass = [s.pictures];
-
-        if (index === this.state.activeOption) {
-
-            optionClass.push(s.flay)
-        }
-
-        return optionClass.join(" ");
-    };
-    // && this.props.stickPicture
-
-
-
-    target = (index) => {
-        // if (index !== this.state.activeOption) {
-        // this.setState({
-        //     activeOption: index,
-        // })
-        // } else {
-        //     this.setState({
-        //         activeOption: "",
-        //     })
-        // }
-
-        if (this.state.elemChosen) {
-            this.setState(pr => ({
-                activeOption: "",
-                elemChosen: !pr.elemChosen
-            }))
-        }
-
-
-        if (!this.state.elemChosen) {
-            this.setState(pr => ({
-                activeOption: index,
-                elemChosen: !pr.elemChosen
-            }))
-        }
-        this.props.onReversStick();
-    }
-
-
-
-    render() {
-        const { flower, flightPictures, onReversStick, onMoveFlower, stickPicture } = this.props
-
-        return (
-            <>
-                {flower.map(({ id, url }, index) =>
-                    <div key={id}
-                        style={{
-                            backgroundImage: `url(${url})`,
-                            top: flightPictures.y,
-                            left: flightPictures.x,
-                        }}
-                        className={this.makeClassName(index)}
-                        onClick={(el) => {
-                            this.target(index);
-                            onReversStick();
-                        }}
-                        onDoubleClick={() => onMoveFlower(id)}
-                    ></div>
-                )
-                }
-            </>
-        )
-    }
+  render() {
+    const { flower, flyPicturyStart, flightPictures, stickPicture } =
+      this.props;
+    return (
+      <>
+        {flower.map(({ id, url }, index) => (
+          <div
+            key={id}
+            style={{
+              backgroundImage: `url(${url})`,
+              top: flightPictures.y + "px",
+              left: flightPictures.x + "px",
+            }}
+            className={flyPicturyStart ? `${s.pictures} ${s.flay}` : s.pictures}
+            onMouseDown={() => stickPicture({ id, url })}
+          ></div>
+        ))}
+      </>
+    );
+  }
 }

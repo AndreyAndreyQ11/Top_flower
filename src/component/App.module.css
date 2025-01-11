@@ -4,10 +4,7 @@
 
   display: inline-flex;
   justify-content: center;
-  /* position: relative;
-  left: 50%;
-  top: 10px;
-  transform: translate(-50%, 0); */
+
   flex-wrap: wrap;
   width: 506px;
   margin-left: 100px;
@@ -15,9 +12,8 @@
 
   position: relative;
   padding: 2px;
-  /* line-height: 0; */
 }
 
-.container>div {
+.container > div {
   width: 100%;
 }

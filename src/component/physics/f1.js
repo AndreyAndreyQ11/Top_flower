@@ -1,36 +1,3 @@
-// const Good = {
-//     offsetHeight: 44,
-//     offsetWidth: 441,
-//     offsetLeft: 67,
-//     offsetTop: 4,
-// }
-
-// const Normal = {
-//     offsetHeight: 44,
-//     offsetWidth: 441,
-//     offsetLeft: 67,
-//     offsetTop: 52,
-// }
-
-// const Hard = {
-//     offsetHeight: 44,
-//     offsetWidth: 441,
-//     offsetLeft: 67,
-//     offsetTop: 100,
-// }
-
-// const startFild = {
-//     offsetHeight: 210,
-//     offsetWidth: 506,
-//     offsetLeft: 2,
-//     offsetTop: 146,
-// }
-
-// const container = {
-//     clientHeight: 358,
-//     clientWidth: 510
-// }
-
 // export default function ({ x, y }) {
 //     // console.log(x, y);
 //     if (y > startFild.offsetTop && y < startFild.offsetTop + startFild.offsetHeight
@@ -51,3 +18,19 @@
 
 //     return "container"
 // }
+export default function (top, pictures) {
+  let newFlyPicture = null; // будующий flyPicture
+  const newTop = [...top]; // Почемуто быстрее работает если копирывать массив
+
+  for (let i = 0; i < newTop.length; i++) {
+    for (let j = 0; j < newTop[i].length; j++) {
+      if (newTop[i][j].id === pictures.id) {
+        // Нашли элемент
+        newFlyPicture = [newTop[i][j]]; // Сохраняем найденный элемент
+
+        newTop[i].splice(j, 1); // Удаляем элемент из подмассива
+        return [newFlyPicture, newTop];
+      }
+    }
+  }
+}

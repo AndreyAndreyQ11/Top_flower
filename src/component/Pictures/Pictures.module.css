@@ -1,32 +1,35 @@
 .pictures {
-    font-size: 8px;
-    border: 1px solid rgb(0, 0, 0);
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    margin: 3px;
-    box-shadow: inset -2px -1px 4px gold;
+  font-size: 8px;
+  border: 1px solid rgb(0, 0, 0);
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 3px;
+  box-shadow: inset -2px -1px 4px gold;
 
-    text-align: right;
-    user-select: none;
+  text-align: right;
+  user-select: none;
 
-    background: url("") 0 0/contain no-repeat, rgb(9, 98, 69);
-    cursor: pointer;
-    color: rgb(210, 255, 125);
-    font-size: 15px;
-
+  background: url("") 0 0 / contain no-repeat, rgb(9, 98, 69);
+  cursor: pointer;
+  color: rgb(210, 255, 125);
+  font-size: 15px;
 }
-
 
 .flay {
-    outline: 4px solid rgb(155, 13, 98);
-    position: absolute;
+  width: 30px;
+  height: 30px;
 
-    transform: translate(-50%, -50%);
+  outline: 4px solid rgb(155, 13, 98);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transform: translate(-50%, -50%);
+  cursor: grabbing;
+  user-select: none;
+  margin: 0px;
 
-    cursor: grabbing;
-    user-select: none;
-    margin: 0px;
-
-    /* z-index: 999; */
+  transition: left 0.01s ease-in, top 0.01s ease-in;
 }
+
+/* z-index: 999; */
