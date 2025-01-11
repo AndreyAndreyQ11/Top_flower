@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Top_flower/static/css/main.3e9f7f33.css",
+    "main.js": "/Top_flower/static/js/main.40707bdc.js",
+    "index.html": "/Top_flower/index.html",
+    "main.3e9f7f33.css.map": "/Top_flower/static/css/main.3e9f7f33.css.map",
+    "main.40707bdc.js.map": "/Top_flower/static/js/main.40707bdc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3e9f7f33.css",
+    "static/js/main.40707bdc.js"
+  ]
+}
