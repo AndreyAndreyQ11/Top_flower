@@ -31,7 +31,7 @@ export default class App extends Component {
     ],
 
     flyPicture: [], //та шо летает
-    stickPicture: false,
+    // stickPicture: false,
     flightPictures: {
       x: "",
       y: "",
@@ -94,6 +94,7 @@ export default class App extends Component {
   stickPicture = (pictures) => {
     const { top, flyPicture } = this.state
 
+    //переносим выбраную картинку в другой массив
     const f2 = f1(top, pictures);
     this.setState({
       flyPicture: f2[0],
