@@ -1,5 +1,4 @@
 import { Component } from "react";
-
 import s from "./Pictures.module.css";
 
 export default class Pictures extends Component {

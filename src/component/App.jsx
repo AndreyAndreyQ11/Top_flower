@@ -28,7 +28,6 @@ export default class App extends Component {
     flightPictures: {
       x: "",
       y: "",
-
     },
     boundingRect: null,
     down: false,

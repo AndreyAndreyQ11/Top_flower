@@ -1,15 +1,12 @@
 .container {
   background-color: aquamarine;
   border: 2px solid rgb(40, 176, 47);
-
   display: inline-flex;
   justify-content: center;
-
   flex-wrap: wrap;
   width: 506px;
   margin-left: 100px;
   margin-top: 100px;
-
   position: relative;
   padding: 2px;
 }

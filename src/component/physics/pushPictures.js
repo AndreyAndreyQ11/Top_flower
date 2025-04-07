@@ -8,7 +8,6 @@ export default function (
   saveLine
 ) {
   const newLine = [...line];
-
   const q1 = numberStringhtPush(containerClass, flightPictures, line);
   // Вставляем flyPicture в нужную позицию одмассива
   if (q1 === null) {
