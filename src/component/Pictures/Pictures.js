@@ -26,6 +26,7 @@ export default class Pictures extends Component {
             }}
             className={flyPicturyStart ? `${s.pictures} ${s.flay}` : s.pictures}
             onMouseDown={() => stickPicture({ id, url })}
+            onTouchStart={() => stickPicture({ id, url })}
           ></div>
         ))}
       </>

@@ -1,37 +1,30 @@
 import { Component } from "react";
 import s from './App.module.css';
 
-import debounce from "lodash/debounce";
+import initialFlower from "./flower.json"
 
-import initialFlower from "../flower.json"
-
-import Top from "./Top/Top"
-import StartFild from "./StartFild/StartFild"
-import Pictures from "./Pictures/Pictures";
-
+import Line from "./Line/Line.js"
+import StartFild from "./StartFild/StartFild.js"
+import Pictures from "./Pictures/Pictures.js";
 
 //Всякая физика
-import f1 from "./physics/f1.js"
-
-// import FildMouseMove from "./FildMouseMove/FildMouseMove"
-// import flyPictures from "./flyPictures.js"
+import extractPicture from "./physics/extractPicture.js"
+import pushPictures from "./physics/pushPictures.js"
 
 export default class App extends Component {
   state = {
-    top: [
+    line: [
       [],
       [],
       [],
       initialFlower, // стартовые
     ],
-    arreyTopKeys: [
+    arreyLineKeys: [
       "good",
       "normal",
       "hard",
     ],
-
     flyPicture: [], //та шо летает
-
     flightPictures: {
       x: "",
       y: "",
@@ -39,9 +32,8 @@ export default class App extends Component {
     },
     boundingRect: null,
     down: false,
+    saveLine: []
   }
-
-
 
   // объект координат элемента при загрузке и обновлении экрана boundingRect = document.querySelector(`.${s.container}`).getBoundingClientRect();
   componentDidMount() {
@@ -67,68 +59,44 @@ export default class App extends Component {
 
   // функция при нажатии
   stickPicture = (pictures) => {
-    const { top, flyPicture, } = this.state
+    const { line, } = this.state
+    //сохраняем предыдущее расположение картинок
+    const saveLineTrue = JSON.parse(JSON.stringify(line));
 
-    //переносим выбраную картинку в другой массив
-    const f2 = f1(top, pictures);
+    //переносим выбраную картинку в отдельный массив
+    const newFlyPicture = extractPicture(line, pictures);
+
+    // тут баг в том что при вызове this.setState  onTouchMove- перестает вызываться
     this.setState({
-      flyPicture: f2[0],
-      top: f2[1],
+      flyPicture: newFlyPicture[0],
+      line: newFlyPicture[1],
       down: true,
+      saveLine: saveLineTrue
     });
-
   };
   //
   mouseUp = () => {
-    console.log(!this.state.down);
+
     if (!this.state.down) return
-
-    const pushPictures = (top, flyPicture) => {
-
-      let newTop = [...top]
-
-
-      let numberStringhtPush = [0, 0,]// дописать надо
-
-      // if (numberStringhtPush >= 0 && numberStringhtPush < newTop.length) {
-      //   newTop[numberStringhtPush].push(flyPicture);
-      // }
-
-
-
-      // Вставляем flyPicture в нужную позицию подмассива
-      newTop[numberStringhtPush[0]].splice(numberStringhtPush[1], 0, flyPicture); // splice добавляет элемент в нужную позицию
-
-
-
-
-      return newTop;
-    };
-
     this.setState({
-      top: pushPictures(this.state.top, this.state.flyPicture[0]),
+      line: pushPictures(this.state.line, this.state.flyPicture[0], s.container, this.state.flightPictures, this.state.saveLine),
       flyPicture: [],
       down: false,
     });
-
   }
 
-
-  // функция срабатывает раз в 10ед вычесляет координаты
-  mouseMove = debounce((el) => {
+  mouseMove = (el) => {
     const { boundingRect, down } = this.state;
 
     if (!boundingRect) return;
 
-
     let x = 0, y = 0;
-
-    // Если из телефона иначе из кампютера
+    // Если из телефона 
     if (el.touches) {
       x = el.touches[0].clientX - boundingRect.left;
       y = el.touches[0].clientY - boundingRect.top;
     } else {
-      // Если событие мыши, получаем координаты из el.clientX и el.clientY
+      // Если событие мыши, получаем координаты из компютера
       x = el.clientX - boundingRect.left;
       y = el.clientY - boundingRect.top;
     }
@@ -136,15 +104,14 @@ export default class App extends Component {
     this.setState({
       flightPictures: { x, y },
     });
-    // console.log(`x: ${x}, y: ${y}`);
-  }, 10);
-
+  };
 
   render() {
-    const { top, arreyTopKeys, flyPicture, flightPictures } = this.state
+    const { line, arreyLineKeys, flyPicture, flightPictures } = this.state
     const { stickPicture, } = this
 
     return (
+
       <div
         className={s.container}
         onMouseMove={this.mouseMove}
@@ -153,10 +120,10 @@ export default class App extends Component {
         onTouchEnd={this.mouseUp}
       >
         {
-          top.slice(0, arreyTopKeys.length).map((item, i) => {
-            const key = arreyTopKeys[i];
+          line.slice(0, arreyLineKeys.length).map((item, i) => {
+            const key = arreyLineKeys[i];
             return (
-              <Top
+              <Line
                 key={key} // добавлен key для оптимизации рендера
                 text={key}
                 bancPictures={item}
@@ -166,17 +133,16 @@ export default class App extends Component {
         }
 
 
-        < StartFild flower={top[top.length - 1]}
+        < StartFild flower={line[line.length - 1]}
           stickPicture={stickPicture}
         />
-
         <div>
           <Pictures
             flower={flyPicture}
             flyPicturyStart={flyPicture.length !== 0}
             flightPictures={flightPictures}
             stickPicture={stickPicture}
-          // onMouseMove={(e) => e.stopPropagation()} // Останавливает всплытие события
+          // onMouseMove={(e) => e.slinePropagation()} // Останавливает всплытие события
           />
         </div>
 
@@ -184,4 +150,3 @@ export default class App extends Component {
     );
   };
 };
-

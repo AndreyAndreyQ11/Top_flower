@@ -1,8 +1,8 @@
 import { Component } from "react";
-import s from "./Top.module.css";
+import s from "./Line.module.css";
 import Pictures from "../Pictures/Pictures";
 
-export default class Top extends Component {
+export default class Line extends Component {
   render() {
     const { text, bancPictures, stickPicture } = this.props;
 
