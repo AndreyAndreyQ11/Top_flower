@@ -29,8 +29,6 @@ export default function (containerClass, flightPictures, line) {
 
     if (top <= y && y <= top + height) {
       //считаем положение среди картинок 30х30 и margin: 3px и длина дивки с названием 64px ;
-      //дописать
-
       let imageCoordinates;
       if (i !== childrens.length - 2) {
         imageCoordinates = line[i].map(

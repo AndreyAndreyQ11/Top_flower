@@ -1,6 +1,5 @@
 import { Component } from "react";
 import s from "./StartFild.module.css";
-
 import Pictures from "../Pictures/Pictures";
 
 export default class StartFild extends Component {

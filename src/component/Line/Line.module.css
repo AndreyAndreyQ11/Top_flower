@@ -1,25 +1,24 @@
 .container {
-    margin: 2px 0;
-    min-height: 44px;
-    display: flex;
-    justify-items: center;
+  margin: 2px 0;
+  min-height: 44px;
+  display: flex;
+  justify-items: center;
 }
 
 .text {
-    background-color: goldenrod;
-    width: 70px;
-    border: 2px solid rgb(0, 0, 0);
-    border-right: none;
-    font-weight: 700;
-    text-transform: capitalize;
-    text-align: right;
-
-    padding-right: 2px;
+  background-color: goldenrod;
+  width: 70px;
+  border: 2px solid rgb(0, 0, 0);
+  border-right: none;
+  font-weight: 700;
+  text-transform: capitalize;
+  text-align: right;
+  padding-right: 2px;
 }
 
 .fild {
-    display: flex;
-    flex-wrap: wrap;
-    border: 2px solid rgb(0, 0, 0);
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid rgb(0, 0, 0);
+  width: 100%;
 }

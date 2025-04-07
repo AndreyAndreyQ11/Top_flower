@@ -11,7 +11,6 @@ export default function (
 
   const q1 = numberStringhtPush(containerClass, flightPictures, line);
   // Вставляем flyPicture в нужную позицию одмассива
-
   if (q1 === null) {
     return saveLine;
   } else {

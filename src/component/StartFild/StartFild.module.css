@@ -1,12 +1,8 @@
 .fild {
-    border: 3px solid rgb(146, 9, 9);
+  border: 3px solid rgb(146, 9, 9);
 
-    width: 100%;
-    min-height: 200px;
-    padding: 2px;
-    line-height: 0;
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center; */
+  width: 100%;
+  min-height: 200px;
+  padding: 2px;
+  line-height: 0;
 }

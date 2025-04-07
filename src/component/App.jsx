@@ -17,14 +17,14 @@ export default class App extends Component {
       [],
       [],
       [],
-      initialFlower, // стартовые
+      initialFlower,
     ],
     arreyLineKeys: [
       "good",
       "normal",
       "hard",
     ],
-    flyPicture: [], //та шо летает
+    flyPicture: [],
     flightPictures: {
       x: "",
       y: "",
@@ -111,7 +111,6 @@ export default class App extends Component {
     const { stickPicture, } = this
 
     return (
-
       <div
         className={s.container}
         onMouseMove={this.mouseMove}
@@ -132,7 +131,6 @@ export default class App extends Component {
           })
         }
 
-
         < StartFild flower={line[line.length - 1]}
           stickPicture={stickPicture}
         />
@@ -142,10 +140,8 @@ export default class App extends Component {
             flyPicturyStart={flyPicture.length !== 0}
             flightPictures={flightPictures}
             stickPicture={stickPicture}
-          // onMouseMove={(e) => e.slinePropagation()} // Останавливает всплытие события
           />
         </div>
-
       </div >
     );
   };
